@@ -58,7 +58,7 @@ class Calculator {
                 }
                 break;
             case '%':
-                computation = prev%current;
+                computation = prev * (current*.01);
                 break;
             default:
                 return;
@@ -71,7 +71,13 @@ class Calculator {
 
     updateDisplay() {
         this.currentScreen.innerText = this.currentScreenText;
-        this.previousScreen.innerText = this.previousScreenText;
+        if (this.operation != null) {
+            this.previousScreen.innerText = `${this.previousScreenText} ${this.operation}`;
+        }
+        else {
+            this.previousScreen.innerText = '';
+        }
+        
     }
 }
 
@@ -87,15 +93,25 @@ const calculator = new Calculator(previousScreen, currentScreen);
 
 numbersButtons.forEach(button => {
     button.addEventListener('click', () => {
+        if (currentScreen.innerText === 'ERROR') {
+            calculator.clear();
+            calculator.updateDisplay();
+        }
         calculator.addScreen(button.innerText)
         calculator.updateDisplay()
     })
+    
 })
 
 operationButtons.forEach(button => {
     button.addEventListener('click', () => {
+        if (currentScreen.innerText === 'ERROR') {
+            calculator.clear();
+            calculator.updateDisplay();
+        }
         calculator.chooseOperation(button.innerText);
         calculator.updateDisplay();
+        
     })
 })
 
@@ -113,34 +129,3 @@ swapButton.addEventListener('click', button => {
     calculator.swapOperation();
     calculator.updateDisplay();
 })
-
-// add = (a,b) => {
-//     return a+b;
-// }
-
-// subtract = (a,b) => {
-//     return a-b;
-// }
-
-// divide = (a,b) => {
-//     if ((a != 0) && (b!=0)) {
-//         return a/b;
-//     }
-//     else {
-//         return false;
-//     }
-// }
-
-// moduleo = (a,b) => {
-//     if ((a != 0) && (b!=0)) {
-//         return a%b;
-//     }
-//     else {
-//         return false;
-//     }
-// }
-
-// multiply = (a,b) => {
-//     return a*b;
-// }
-

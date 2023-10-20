@@ -58,6 +58,26 @@ body {
     color: rgba(255, 255, 255, 0.65)
 }
 
+.orange_btn {
+    border: 1px solid rgba(255, 123, 0, 0.75) !important; 
+    background-color: rgba(255, 123, 0, 0.75) !important;
+}
+
+.orange_btn:hover {
+    border: 1px solid rgba(255, 255, 255, 0.55) !important; 
+    background-color: rgba(255, 255, 255, 0.55) !important;
+}
+
+.grey_btn {
+    border: 1px solid rgba(158, 158, 158, 0.85) !important; 
+    background-color: rgba(158, 158, 158, 0.85) !important;
+}
+
+.grey_btn:hover {
+    border: 1px solid rgba(255, 255, 255, 0.55) !important; 
+    background-color: rgba(255, 255, 255, 0.55) !important;
+}
+
 @media only screen and (max-width: 550px){
     .calculator {
         display: grid;
