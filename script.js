@@ -11,8 +11,11 @@ class Calculator {
         this.operation = undefined;
     } 
 
-    swap() {
-         
+    swapOperation() {
+       if(this.currentScreenText === '') return
+       const current = parseFloat(this.currentScreenText);
+       this.currentScreenText = current * -1;
+        
     }
 
     addScreen(number) {
@@ -47,7 +50,12 @@ class Calculator {
                 computation = prev * current;
                 break;
             case '÷':
-                computation = prev/current;
+                if ((prev !== 0) && (current !== 0)) {
+                    computation = prev/current;
+                }
+                else {
+                    computation = 'ERROR';                     
+                }
                 break;
             case '%':
                 computation = prev%current;
@@ -55,6 +63,7 @@ class Calculator {
             default:
                 return;
         }
+          
         this.currentScreenText = computation;
         this.operation = undefined;
         this.previousScreenText = '';
@@ -68,7 +77,7 @@ class Calculator {
 
 const equalsButton = document.querySelector('[data-equals]');
 const clearButton = document.querySelector('[data-all-clear]');
-const swapButton = document.querySelector('[data-sawp-operand]');
+const swapButton = document.querySelector('[data-swap-operand]');
 const operationButtons = document.querySelectorAll('[data-operation]');
 const numbersButtons = document.querySelectorAll('[data-number]');
 const previousScreen = document.querySelector('[data-previous]');
@@ -97,6 +106,11 @@ equalsButton.addEventListener('click', button => {
 
 clearButton.addEventListener('click', button => {
     calculator.clear();
+    calculator.updateDisplay();
+})
+
+swapButton.addEventListener('click', button => {
+    calculator.swapOperation();
     calculator.updateDisplay();
 })
 
