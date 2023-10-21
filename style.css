@@ -1,3 +1,4 @@
+/* Universal Styling */
 *, *::before, *::after {
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
@@ -12,6 +13,7 @@ body {
     background: linear-gradient(to right, #84fdcc, #24df78);
 }
 
+/* Calculator Container Grid */
 .calculator {
     display: grid;
     justify-content: center;
@@ -23,6 +25,7 @@ body {
     
 }
 
+/* Begin Universal Button Styling */
 .calculator > button {
     cursor: pointer;
     border-radius: 100px;
@@ -37,11 +40,13 @@ body {
     border: 1px solid rgba(0, 0, 0, .65);
     background-color: rgba(0, 0, 0, .65);
 }
+/* End Universal Button Styling */
 
 .span_two {
     grid-column: span 2;
 }
 
+/* Screen Styling */
 .screen {
     background: rgba(0, 0, 0, .75);
     grid-column: 1 / -1;
@@ -54,6 +59,7 @@ body {
     word-break: break-all;
 }
 
+/* Begin Button Coloring */
 .screen .p_number {
     color: rgba(255, 255, 255, 0.65)
 }
@@ -77,7 +83,9 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.55) !important; 
     background-color: rgba(255, 255, 255, 0.55) !important;
 }
+/* End Button Coloring */
 
+/* Creating Responsiveness */
 @media only screen and (max-width: 550px){
     .calculator {
         display: grid;
